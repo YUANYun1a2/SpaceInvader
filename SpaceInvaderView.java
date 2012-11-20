@@ -6,12 +6,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-<<<<<<< HEAD
-=======
 
+import com.example.android.snake.R;
 
-
->>>>>>> refs/remotes/origin/master
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -56,7 +53,6 @@ public class SpaceInvaderView extends View {
 
 
 	
-	
 
 	void init(){
 		paint = new Paint();
@@ -66,8 +62,6 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "text";
-		Resources r = this.getContext().getResources();
-	    
 	}
 
 
@@ -106,35 +100,12 @@ public class SpaceInvaderView extends View {
 		int y = computeSize(heightMeasureSpec,TARGET_HEIGHT);
 		this.setMeasuredDimension(x,y);
 	}
-	
-	
-	
-	public void loadTile(int key, Drawable tile) {
-	        Bitmap bitmap = Bitmap.createBitmap(mTileSize, mTileSize, Bitmap.Config.ARGB_8888);
-	        Canvas canvas = new Canvas(bitmap);
-	        tile.setBounds(0, 0, mTileSize, mTileSize);
-	        tile.draw(canvas);
-	        
-	        return = bitmap;
-	    }
-	
-	private void initSnakeView() {
-        setFocusable(true);
 
-
-        Resources r = this.getContext().getResources();
-        
-        resetImage(4);
-        loadImage(RED_STAR, r.getDrawable(R.drawable.redstar));
-        loadImage(YELLOW_STAR, r.getDrawable(R.drawable.yellowstar));
-        loadImage(GREEN_STAR, r.getDrawable(R.drawable.greenstar));
-    	
-    }
+}
 
 
 
-
-public void loadTile(int id, Drawable tile) {
+public void loadTile(int tile, Drawable tile) {
 	int x = tile.getIntrinsicWidth();
 	int y = tile.getIntrinsicHeight();
     Bitmap bitmap = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
@@ -144,12 +115,12 @@ public void loadTile(int id, Drawable tile) {
     
     return bitmap;
 }
-
-
+	private void initSnakeView() {
+			setFocusable(true);
 
 			Resources r = this.getContext().getResources();
     
-			
+			resetImage(4);
 			loadImage(BOMBE, r.getDrawable(R.drawable.bombe));
 			loadImage(ETOILE, r.getDrawable(R.drawable.etoile));
 			loadImage(MARIO, r.getDrawable(R.drawable.mario));
@@ -159,4 +130,3 @@ public void loadTile(int id, Drawable tile) {
 }
 
 
-}
