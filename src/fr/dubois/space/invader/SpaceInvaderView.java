@@ -7,7 +7,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.example.android.snake.R;
+
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -49,6 +52,7 @@ public class SpaceInvaderView extends View {
 	}
 
 
+	
 	
 
 	void init(){
@@ -97,5 +101,27 @@ public class SpaceInvaderView extends View {
 		int y = computeSize(heightMeasureSpec,TARGET_HEIGHT);
 		this.setMeasuredDimension(x,y);
 	}
+	
+	
+	
+	public void loadTile(int key, Drawable tile) {
+	        Bitmap bitmap = Bitmap.createBitmap(mTileSize, mTileSize, Bitmap.Config.ARGB_8888);
+	        Canvas canvas = new Canvas(bitmap);
+	        tile.setBounds(0, 0, mTileSize, mTileSize);
+	        tile.draw(canvas);
+	        
+	        return = bitmap;
+	    }
+	
+	private void initSnakeView() {
+        setFocusable(true);
 
+        Resources r = this.getContext().getResources();
+        
+        resetImage(4);
+        loadImage(RED_STAR, r.getDrawable(R.drawable.redstar));
+        loadImage(YELLOW_STAR, r.getDrawable(R.drawable.yellowstar));
+        loadImage(GREEN_STAR, r.getDrawable(R.drawable.greenstar));
+    	
+    }
 }
