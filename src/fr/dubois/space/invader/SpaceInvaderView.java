@@ -62,6 +62,8 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "text";
+		Resources r = this.getContext().getResources();
+	    
 	}
 
 
@@ -101,11 +103,11 @@ public class SpaceInvaderView extends View {
 		this.setMeasuredDimension(x,y);
 	}
 
-}
 
 
 
-public void loadTile(int tile, Drawable tile) {
+
+public void loadTile(int id, Drawable tile) {
 	int x = tile.getIntrinsicWidth();
 	int y = tile.getIntrinsicHeight();
     Bitmap bitmap = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
@@ -115,8 +117,8 @@ public void loadTile(int tile, Drawable tile) {
     
     return bitmap;
 }
-	private void initSnakeView() {
-			setFocusable(true);
+
+
 
 			Resources r = this.getContext().getResources();
     
@@ -129,4 +131,4 @@ public void loadTile(int tile, Drawable tile) {
 	
 }
 
-
+}
