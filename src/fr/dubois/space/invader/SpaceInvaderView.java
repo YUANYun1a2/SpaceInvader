@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.example.android.snake.R;
+
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -122,7 +122,7 @@ public void loadTile(int id, Drawable tile) {
 
 			Resources r = this.getContext().getResources();
     
-			resetImage(4);
+			
 			loadImage(BOMBE, r.getDrawable(R.drawable.bombe));
 			loadImage(ETOILE, r.getDrawable(R.drawable.etoile));
 			loadImage(MARIO, r.getDrawable(R.drawable.mario));
