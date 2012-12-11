@@ -6,12 +6,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> refs/remotes/origin/master
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -38,6 +32,8 @@ public class SpaceInvaderView extends View {
 	private Paint paint; // Style pour le texte	
 	private String text; // texte à afficher
 
+    private Bitmap alien;	
+	private Alien monAlien ;
 
 	public SpaceInvaderView(Context context) {
 		super(context);
@@ -59,6 +55,11 @@ public class SpaceInvaderView extends View {
 	
 
 	void init(){
+		
+		alien = loadImage(R.drawable.monstre);
+		
+		monAlien = new Alien(alien,0,0);
+		
 		paint = new Paint();
 		paint.setStyle(Style.STROKE);
 		paint.setColor(Color.YELLOW);
@@ -66,7 +67,7 @@ public class SpaceInvaderView extends View {
 		paint.setTextSize(36);
 		paint.setTextAlign(Paint.Align.CENTER);
 		text = "text";
-		Resources r = this.getContext().getResources();
+	
 	    
 	}
 
@@ -76,15 +77,24 @@ public class SpaceInvaderView extends View {
 
 
 
-
 	@Override
 	protected void onDraw(Canvas canvas) {
+		
+	
+		
+		
 		super.onDraw(canvas);
+		
+		
+		
 		canvas.drawRGB(0, 0, 0);
 		canvas.drawRect(0, 0, TARGET_WIDTH-1, TARGET_HEIGHT-1, paint);
 		if (text != null){
 			canvas.drawText(text, canvas.getWidth()/2,canvas.getHeight()/2, paint);
 		}
+		
+		
+		monAlien.draw(canvas);
 	}
 
 
@@ -108,55 +118,22 @@ public class SpaceInvaderView extends View {
 	}
 	
 	
+	private Bitmap loadImage(int res){
+		
+		Drawable monDrawable = this.getContext().getResources().getDrawable(res);
+		
+		int x = monDrawable.getIntrinsicWidth();
+		int y = monDrawable.getIntrinsicHeight();
+		
+		Bitmap bitmap = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
+	    Canvas canvas = new Canvas(bitmap);
+	    monDrawable.setBounds(0, 0, x, y);
+	    monDrawable.draw(canvas);
+		
+	    return bitmap;
+		
+	}
 	
-	public void loadTile(int key, Drawable tile) {
-	        Bitmap bitmap = Bitmap.createBitmap(mTileSize, mTileSize, Bitmap.Config.ARGB_8888);
-	        Canvas canvas = new Canvas(bitmap);
-	        tile.setBounds(0, 0, mTileSize, mTileSize);
-	        tile.draw(canvas);
-	        
-	        return = bitmap;
-	    }
-	
-	private void initSnakeView() {
-        setFocusable(true);
-
-
-        Resources r = this.getContext().getResources();
-        
-        resetImage(4);
-        loadImage(RED_STAR, r.getDrawable(R.drawable.redstar));
-        loadImage(YELLOW_STAR, r.getDrawable(R.drawable.yellowstar));
-        loadImage(GREEN_STAR, r.getDrawable(R.drawable.greenstar));
-    	
-    }
-
-
-
-
-public void loadTile(int id, Drawable tile) {
-	int x = tile.getIntrinsicWidth();
-	int y = tile.getIntrinsicHeight();
-    Bitmap bitmap = Bitmap.createBitmap(x, y, Bitmap.Config.ARGB_8888);
-    Canvas canvas = new Canvas(bitmap);
-    tile.setBounds(0, 0, x, y);
-    tile.draw(canvas);
-    
-    return bitmap;
-}
-
-
-
-			Resources r = this.getContext().getResources();
-    
-			
-			loadImage(BOMBE, r.getDrawable(R.drawable.bombe));
-			loadImage(ETOILE, r.getDrawable(R.drawable.etoile));
-			loadImage(MARIO, r.getDrawable(R.drawable.mario));
-			loadImage(MONSTRE, r.getDrawable(R.drawable.monstre));
-			
-	
-}
 
 
 }
